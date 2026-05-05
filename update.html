@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIQUE TECH – General Maintenance Solutions</title>
+
+    <!-- Google font (similar to Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font-awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ---------- ROOT & RESET ---------- */
+        :root{
+            --dark-blue:#002b5c;
+            --white:#ffffff;
+            --light-gray:#f5f7fa;
+            --accent:#ff6f00;          /* orange accent */
+            --text:#333333;
+            --transition:.3s ease;
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Poppins',sans-serif;color:var(--text);line-height:1.6;scroll-behavior:smooth;}
+
+        /* ---------- HEADER ---------- */
+        header{
+            position:fixed;top:0;left:0;width:100%;background:var(--white);
+            box-shadow:0 2px 6px rgba(0,0,0,.05);z-index:1000;
+        }
+        .container{width:90%;max-width:1200px;margin:auto;}
+        nav{
+            display:flex;align-items:center;justify-content:space-between;padding:1rem 0;
+        }
+        .logo{
+            font-weight:700;font-size:1.4rem;color:var(--dark-blue);
+        }
+        nav ul{
+            list-style:none;display:flex;gap:2rem;
+        }
+        nav a{
+            text-decoration:none;color:var(--dark-blue);font-weight:500;transition:var(--transition);
+        }
+        nav a:hover{color:var(--accent);}
+        /* mobile nav */
+        .menu-toggle{display:none;font-size:1.4rem;cursor:pointer;color:var(--dark-blue);}
+
+        /* ---------- HERO ---------- */
+        .hero{
+            min-height:100vh;background:linear-gradient(rgba(0,43,92,.85),rgba(0,43,92,.85)),
+                         url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            display:flex;align-items:center;text-align:center;color:var(--white);
+        }
+        .hero h1{font-size:2.8rem;margin-bottom:1rem;animation:fadeUp 1s ease;}
+        .hero p{font-size:1.2rem;margin-bottom:2rem;animation:fadeUp 1s ease .2s both;}
+        .btn{
+            display:inline-block;padding:.9rem 2.2rem;background:var(--accent);color:var(--white);
+            border:none;border-radius:4px;font-size:1rem;font-weight:600;cursor:pointer;transition:var(--transition);
+        }
+        .btn:hover{background:#e65100;}
+        .btn-outline{
+            background:transparent;border:2px solid var(--white);margin-left:.8rem;
+        }
+        .btn-outline:hover{background:var(--white);color:var(--dark-blue);}
+
+        /* ---------- SECTIONS ---------- */
+        section{padding:5rem 0;}
+        h2{text-align:center;font-size:2.2rem;margin-bottom:3rem;color:var(--dark-blue);}
+
+        /* About */
+        .about{text-align:center;max-width:800px;margin:auto;font-size:1.05rem;}
+
+        /* Services */
+        .services-grid{
+            display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;
+        }
+        .service-card{
+            background:var(--white);border-radius:8px;padding:2rem 1.5rem;text-align:center;
+            box-shadow:0 4px 12px rgba(0,0,0,.06);transition:var(--transition);
+        }
+        .service-card:hover{transform:translateY(-6px);box-shadow:0 8px 20px rgba(0,0,0,.08);}
+        .service-card i{font-size:2.4rem;color:var(--accent);margin-bottom:1rem;}
+        .service-card h3{margin-bottom:.7rem;color:var(--dark-blue);}
+
+        /* Why Us */
+        .why-grid{
+            display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;text-align:center;
+        }
+        .why-item i{font-size:2.2rem;color:var(--accent);margin-bottom:1rem;}
+        .why-item h3{margin-bottom:.5rem;color:var(--dark-blue);}
+
+        /* Contact */
+        .contact-wrapper{
+            display:grid;grid-template-columns:1fr 1fr;gap:3rem;
+        }
+        .contact-form{
+            display:flex;flex-direction:gap:1.2rem;
+        }
+        .contact-form input,.contact-form textarea{
+            width:100%;padding:.8rem 1rem;border:1px solid #ccd1d9;border-radius:4px;font-family:inherit;font-size:1rem;
+        }
+        .contact-form textarea{resize:vertical;min-height:140px;}
+        .contact-info p{margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+        .contact-info i{color:var(--accent);}
+
+        /* Footer */
+        footer{
+            background:var(--dark-blue);color:var(--white);text-align:center;padding:2rem 0;font-size:.9rem;
+        }
+        footer a{color:var(--accent);text-decoration:none;}
+
+        /* ---------- ANIMATIONS ---------- */
+        @keyframes fadeUp{
+            from{opacity:0;transform:translateY(30px);}
+            to{opacity:1;transform:translateY(0);}
+        }
+        .fade-up{
+            opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;
+        }
+        .fade-up.visible{opacity:1;transform:translateY(0);}
+
+        /* ---------- UTILITIES ---------- */
+        .text-center{text-align:center;}
+        .mt-1{margin-top:1rem;}
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width:992px){
+            .contact-wrapper{grid-template-columns:1fr;}
+        }
+        @media (max-width:768px){
+            nav ul{
+                position:fixed;top:60px;right:-100%;width:70%;height:calc(100vh - 60px);
+                background:var(--white);flex-direction:column;align-items:center;justify-content:start;
+                box-shadow:-2px 0 6px rgba(0,0,0,.05);transition:right .4s ease;
+            }
+            nav ul.show{right:0;}
+            .menu-toggle{display:block;}
+            .hero h1{font-size:2.2rem;}
+            .hero p{font-size:1rem;}
+            .btn-outline{margin-left:0;margin-top:1rem;}
+        }
+    </style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">UNIQUE TECH</div>
+            <ul id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
+        </nav>
+    </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="hero">
+    <div class="container">
+        <h1>Reliable General Maintenance Solutions You Can Trust</h1>
+        <p>Residential • Commercial • Industrial Maintenance Services</p>
+        <div>
+            <a href="#contact" class="btn">Request a Quote</a>
+            <a href="tel:+971501234567" class="btn btn-outline">Call Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="about">
+    <div class="container">
+        <h2>About Us</h2>
+        <p>
+            UNIQUE TECH General Maintenance Company delivers reliable, cost-effective, and high-quality maintenance solutions across electrical, plumbing, HVAC, and civil works. Our skilled team ensures safety, efficiency, and long-lasting results.
+        </p>
+    </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="services">
+    <div class="container">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card fade-up">
+                <i class="fas fa-bolt"></i>
+                <h3>Electrical Maintenance</h3>
+                <p>Full electrical inspection, repair & installation for safe and efficient systems.</p>
+            </div>
+            <div class="service-card fade-up">
+                <i class="fas fa-faucet"></i>
+                <h3>Plumbing & Sanitary Works</h3>
+                <p>Leak fixes, pipe installations, drainage solutions & sanitary fittings.</p>
+            </div>
+            <div class="service-card fade-up">
+                <i class="fas fa-snowflake"></i>
+                <h3>Air Conditioning</h3>
+                <p>Split & HVAC servicing, cleaning, repair and new installations.</p>
+            </div>
+            <div class="service-card fade-up">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Painting Works</h3>
+                <p>Interior & exterior painting with premium finishes and quick turnaround.</p>
+            </div>
+            <div class="service-card fade-up">
+                <i class="fas fa-border-style"></i>
+                <h3>Gypsum & Ceiling Works</h3>
+                <p>False ceilings, partitions, decorative gypsum features & more.</p>
+            </div>
+            <div class="service-card fade-up">
+                <i class="fas fa-th"></i>
+                <h3>Tile & Masonry Works</h3>
+                <p>Floor & wall tiling, marble fixing, block & plaster works.</p>
+            </div>
+            <div class="service-card fade-up">
+                <i class="fas fa-tools"></i>
+                <h3>General Repair & Handyman</h3>
+                <p>One-call solution for all minor to major property repairs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= WHY US ================= -->
+<section id="why-us" class="why-us">
+    <div class="container">
+        <h2>Why Choose Us</h2>
+        <div class="why-grid">
+            <div class="why-item fade-up">
+                <i class="fas fa-user-tie"></i>
+                <h3>Experienced & Skilled Technicians</h3>
+                <p>Certified professionals with years of field expertise.</p>
+            </div>
+            <div class="why-item fade-up">
+                <i class="fas fa-hand-holding-usd"></i>
+                <h3>Affordable & Transparent Pricing</h3>
+                <p>No hidden charges – clear quotations upfront.</p>
+            </div>
+            <div class="why-item fade-up">
+                <i class="fas fa-clock"></i>
+                <h3>Fast Response Time</h3>
+                <p>We arrive on schedule and finish on time.</p>
+            </div>
+            <div class="why-item fade-up">
+                <i class="fas fa-award"></i>
+                <h3>Quality Workmanship</h3>
+                <p>Every job is inspected to meet high standards.</p>
+            </div>
+            <div class="why-item fade-up">
+                <i class="fas fa-thumbs-up"></i>
+                <h3>Customer Satisfaction Guaranteed</h3>
+                <p>We’re not happy until you are – 100 % satisfaction policy.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>Get In Touch</h2>
+        <div class="contact-wrapper">
+            <form class="contact-form fade-up" id="quote-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <textarea placeholder="Tell us about your project..." required></textarea>
+                <button type="submit" class="btn">Send Request</button>
+            </form>
+            <div class="contact-info fade-up">
+                <h3>Contact Details</h3>
+                <p><i class="fas fa-phone-alt"></i> +971 50 123 4567</p>
+                <p><i class="fas fa-envelope"></i> info@uniquetech.ae</p>
+                <p><i class="fas fa-map-marker-alt"></i> UAE</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <div class="container">
+        © <span id="year"></span> UNIQUE TECH General Maintenance. All rights reserved.
+    </div>
+</footer>
+
+<!-- ================= SCRIPTS ================= -->
+<script>
+    /* Mobile nav toggle */
+    const menuToggle=document.getElementById('menu-toggle');
+    const navMenu=document.getElementById('nav-menu');
+    menuToggle.addEventListener('click',()=>navMenu.classList.toggle('show'));
+
+    /* Smooth scroll for CTA buttons */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+        anchor.addEventListener('click',function(e){
+            e.preventDefault();
+            const target=document.querySelector(this.getAttribute('href'));
+            if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+            navMenu.classList.remove('show');
+        });
+    });
+
+    /* Fade-up on scroll */
+    const faders=document.querySelectorAll('.fade-up');
+    const appearOptions={threshold:.3};
+    const appearOnScroll=new IntersectionObserver((entries,observer)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    },appearOptions);
+    faders.forEach(el=>appearOnScroll.observe(el));
+
+    /* Form validation + simple success message */
+    document.getElementById('quote-form').addEventListener('submit',function(e){
+        e.preventDefault();
+        alert('Thank you! We will contact you within 24 hours.');
+        this.reset();
+    });
+
+    /* Dynamic year */
+    document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
